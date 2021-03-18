@@ -1,0 +1,34 @@
+REACT APP
+
+---
+We get a starter point by this repo.
+    > git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
+    > cd ReduxSimpleStarter
+    > npm install
+    > npm start
+---
+
+---
+deleted src folder and created an empty one
+
+created index.js file
+
+created a components folder -- EACH COMPONENT ONE FILE
+
+created an api key and added to index.js
+runned to download the packages
+    > npm install --save youtube-api-search
+
+created SearchBar and imported to index
+
+made api search
+
+created video_list.js
+
+created video_list_item.js
+---
+
+---
+closing 8080 open port
+    fuser -k 8080/tcp
+---

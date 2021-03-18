@@ -1,0 +1,11 @@
+.main-div{
+  margin: 50px;
+  align-items: center;
+  background-color: orange;
+  padding: 20px;
+}
+
+.by{
+  text-align: right;
+  font-size: 12px;
+}

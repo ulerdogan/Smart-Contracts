@@ -1,0 +1,72 @@
+WEB3.js cheatsheet
+__________________
+
+---
+npm init -> creates a node project in a directory
+---
+
+---
+Project Directory
+    contracts               ---> directory that contains project contracts
+        Inbox.sol
+    test                    ---> testing the contract by Mocha code
+        Inbox.test.js
+    package.json            ---> dependecies about projecy
+    compile.js              ---> to compile in the contracts directory codes
+    deploy.js               ---> to take compile code into Ethereum blockchain
+---
+
+---
+npm install --save solc            ---> installs solidity compiler into project directory
+
+    npm uninstall solc                 ---> these 2 steps may be required to work in compatible version   
+    npm install --save solc@0.4.25     ---> the required version to be applied in the course contents
+---
+
+---
+prepare "compile.js" file
+---
+
+---
+Bytecode --deploy-->    /-> Contract Instance in Ganache
+ABI      --Web3----> |||
+---
+
+---
+npm install --save mocha ganache-cli web3@1.0.0-beta.26  ---> installing modules
+---
+
+---
+prepare "Inbox.test.js" file
+---
+
+---
+mocha functions:
+    it ---> run a test and make an assertion
+    describe ---> groups together "it" functions
+    beforeEach ---> execute some general setup code
+
+    changed "package.json"s test into "mocha"
+
+    npm run test  ---> runs the mocha test and makes the return: pass or fail
+
+a test try made with Car class example                      ---> on the last comments 
+
+then a getAccounts test for ganache accounts by promises    ---> on the middle comments
+
+and a getAccounts test for ganache accounts by async/await  ---> on main scope
+
+we make tests
+---
+
+---
+    interact with deployed contract needs ABI, address of the contract
+    create a contract               needs ABI, bytecode
+---
+
+---
+signed up for infura.io and get a Rinkeby API Key
+    npm install --save truffle-hdwallet-provider
+
+created deploy.js file
+---

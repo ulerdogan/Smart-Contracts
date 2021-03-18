@@ -1,0 +1,31 @@
+REACT APP with LOTTERY CONTRACT CHEATSHEET
+
+---
+    npm install -g create-react-app  --> downloading react folder creator (need to run uninstall first)
+    create-react-app lottery-react   --> creating the project
+---
+
+project structure
+
+public
+    index.html ---> one flie that we are going to care about
+    ...
+src
+    App.js ---> main file
+
+---
+    npm run start   --> starts the server
+---
+
+---
+installing web3 lib
+    npm install --save web3@1.0.0-beta.35
+
+created a file to apply web3 functions - /src/web3.js
+---
+
+---
+deployed the contract, 
+created /src/lottery.js file
+write the abi
+---
