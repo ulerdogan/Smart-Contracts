@@ -1,0 +1,32 @@
+npm init
+
+npm install --save ganache-cli mocha solc@0.4.25 fs-extra web3@1.0.0-beta.35
+
+---
+
+project stucture:
+
+    ethereum
+        build
+        contracts
+            Campaign.sol
+        compile.js
+        deploy.js
+    test
+        Campaign.test.js
+
+---
+
+created compile.js file
+
+---
+
+created Campaign.test.js file
+
+---
+npm install --save truffle-hdwallet-provider@0.03
+createed deploy.js file
+
+0x212Fbeb6d7933d2c03a50a12321c380f01b86976
+
+---
