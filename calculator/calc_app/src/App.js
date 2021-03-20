@@ -7,28 +7,45 @@ class App extends Component {
 
   state = {
     result: "Click the button, and make sure that you are logged in at Rinkeby Network. Then, wait until load fully!",
-    valueOne: "",
-    valueTwo: "",
-    message: ""
+    valueOneAdd: "",
+    valueOneMult: "",
+    valueTwoAdd: "",
+    valueTwoMult: "",
+    messageAdd: "",
+    messageMult: ""
   };
 
   // checking the the last result
   Check = async (event) => {
-    const result = await addition.methods.result().call();
+    const accounts = await web3.eth.getAccounts();
+    const result = await addition.methods.results(accounts[0]).call();
     this.setState({ result });
   };
 
-  calcSubmit = async (event) => {
+  calcAddSubmit = async (event) => {
     event.preventDefault();
     const accounts = await web3.eth.getAccounts();
 
-    this.setState({ message: "Waiting for the transaction..." });
+    this.setState({ valueOneMult: "", valueTwoMult: "", messageAdd: "Waiting for the transaction...",messageMult: ""  });
 
-    await addition.methods.sum(this.state.valueOne, this.state.valueTwo).send({
+    await addition.methods.sum(this.state.valueOneAdd, this.state.valueTwoAdd).send({
       from: accounts[0]
     });
 
-    this.setState({ message: "Transaction completed." });
+    this.setState({ messageAdd: "Transaction completed." });
+  };
+
+  calcMultSubmit = async (event) => {
+    event.preventDefault();
+    const accounts = await web3.eth.getAccounts();
+
+    this.setState({ valueOneAdd: "", valueTwoAdd: "", messageAdd: "" , messageMult: "Waiting for the transaction..." });
+
+    await addition.methods.product(this.state.valueOneMult, this.state.valueTwoMult).send({
+      from: accounts[0]
+    });
+
+    this.setState({ messageMult: "Transaction completed." });
   };
 
   render() {
@@ -37,20 +54,33 @@ class App extends Component {
         <h1> The Most Expensive Calculator of the World: Ethereum! </h1>
         <hr />
 
-        <p> Enter two values, and get the sum of them from EVM... </p>
+        <p> Enter two values, and get the sum or product of them from EVM... </p>
         <br />
 
-        <form onSubmit={this.calcSubmit}>
+        <form onSubmit={this.calcAddSubmit}>
           <input
-            value={this.state.valueOne}
-            onChange={event => this.setState({ valueOne: event.target.value })}
+            value={this.state.valueOneAdd}
+            onChange={event => this.setState({ valueOneAdd: event.target.value })}
           />
           <input
-            value={this.state.valueTwo}
-            onChange={event => this.setState({ valueTwo: event.target.value })}
+            value={this.state.valueTwoAdd}
+            onChange={event => this.setState({ valueTwoAdd: event.target.value })}
           />
-          <button> CALC </button>
-          <p> {this.state.message} </p>
+          <button> ADD </button>
+          <p> {this.state.messageAdd} </p>
+        </form>
+        <br/>
+        <form onSubmit={this.calcMultSubmit}>
+          <input
+            value={this.state.valueOneMult}
+            onChange={event => this.setState({ valueOneMult: event.target.value })}
+          />
+          <input
+            value={this.state.valueTwoMult}
+            onChange={event => this.setState({ valueTwoMult: event.target.value })}
+          />
+          <button> MULTIPLY </button>
+          <p> {this.state.messageMult} </p>
         </form>
         <hr />
         <h4> The last result is: {this.state.result} </h4>

@@ -6,7 +6,7 @@ const {interface, bytecode} = require("./compile");
 
 const provider = new HDWalletProvider(
     "__MNEMONIC__",
-    "__INFURA-RINKEBY-APIKEY__"
+    "__APIKEY__"
 );
 
 const web3 = new Web3(provider);
