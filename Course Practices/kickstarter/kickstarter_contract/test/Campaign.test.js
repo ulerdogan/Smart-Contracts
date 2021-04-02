@@ -59,7 +59,7 @@ describe("Campaigns", () => {
 
     it("requires a minimum contribution", async () => {
         try {
-            await ccampaign.methods.contribute.send({
+            await campaign.methods.contribute.send({
                 value: "5",
                 from: accounts[1]
             });

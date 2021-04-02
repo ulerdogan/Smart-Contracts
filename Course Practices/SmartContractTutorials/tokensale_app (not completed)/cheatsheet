@@ -1,0 +1,40 @@
+https://ethereum-blockchain-developer.com/060-tokenization/00-overview/
+
+---
+
+truffle unbox react --> react box oluşturma
+  
+  Compile:              truffle compile
+  Migrate:              truffle migrate
+  Test contracts:       truffle test
+  Test dapp:            cd client && npm test
+  Run dev server:       cd client && npm run start
+  Build for production: cd client && npm run build
+  
+Remove all contracts in the "/contracts" folder, except the Migrations.sol file.
+
+Remove all the tests in the "/tests" folder.
+
+Remove all migrations except the 01_intial_migration.js.
+
+NOW ZERO-TEMPLATE READY 
+---
+
+npm install --save @openzeppelin/contracts@v3.0.0
+create MyToken.sol
+
+create ./migrations/2_deploy_contracts.js
+
+add compilers dependecy to truffle-config.js
+---
+ 
+truffle develop
+  migrate
+
+---
+
+npm install --save chai chai-bn chai-as-promised
+
+write tests MyToken.test.js
+
+---
