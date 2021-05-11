@@ -30,3 +30,26 @@ createed deploy.js file
 0x212Fbeb6d7933d2c03a50a12321c380f01b86976
 
 ---
+
+next.js is the multipage supported create-react-app alterantive
+
+    npm install --save next@4.1.4 react react-dom
+
+"pages" directory consists every web page
+..../show a page
+index.js is for root directory
+.../
+---
+
+added a new script to package.json
+"dev": "next dev"
+
+    npm run dev
+runs localhost 
+---
+
+created web3.js
+
+created factory.js
+
+---

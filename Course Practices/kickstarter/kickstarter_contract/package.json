@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "dev": "next dev"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,9 @@
     "fs-extra": "^9.1.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^8.3.2",
+    "next": "^4.1.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "solc": "^0.4.25",
     "truffle-hdwallet-provider": "0.0.3",
     "web3": "^1.0.0-beta.35"
