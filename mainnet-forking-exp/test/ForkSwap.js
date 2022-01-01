@@ -82,7 +82,7 @@ describe("ForkSwap Contract" , function () {
             await ForkSwap.swapExactETHForDAI({ value: ethers.utils.parseEther("1") })
 
             let blnc = await erc20.balanceOf(owner.address);
-            console.log(blnc);
+            console.log(ethers.utils.formatEther(blnc));
         });
     });
 });
