@@ -1,6 +1,5 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-const {hre} = require("hardhat");
 const provider = ethers.provider;
 
 async function increaseTime(value) {
@@ -56,18 +55,25 @@ describe("ForkSwap Contract" , function () {
             callerBalance = ethers.utils.formatEther(callerBalance);
             console.log("Address: " + callerAddress + "has " + callerBalance + " ETH");
         });
+
         it("Gives block timestamp and skip it", async function () {
-            let block_number = await provider.getBlockNumber( ); 
-            console.log("Block Number: " + block_number);
-            let block = await provider.getBlock(block_number);
-            let block_timestamp = block.timestamp;
-            console.log("Block Timestamp:" + block_timestamp);
-            
-            // await provider.send('evm_increaseTime', [3600]);
-            // await provider.send('evm_mine');
-            increaseTime(3600);
+            let block, block_timestamp, block_number;
+
+            block_number = await provider.getBlockNumber();
+            block = await provider.getBlock(block_number);
             block_timestamp = block.timestamp;
-            console.log("Block Timestamp:" + block_timestamp);
+            console.log("Block Number: " + block_number + "\n" + "Block Timestamp:" + block_timestamp);
+            
+            await provider.send('evm_increaseTime', [3600]);
+            await provider.send('evm_mine');
+            //await increaseTime(3600);
+
+            
+            block_number = await provider.getBlockNumber();
+            block = await provider.getBlock(block_number);
+            block_timestamp = block.timestamp;
+            console.log("Block Number: " + block_number + "\n" + "Block Timestamp:" + block_timestamp);
+
         });
     });
 
