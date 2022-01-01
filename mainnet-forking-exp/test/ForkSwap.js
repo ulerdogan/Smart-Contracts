@@ -1,11 +1,15 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-const { waffle } = require("hardhat");
-const provider = waffle.provider;
+const {hre} = require("hardhat");
+const provider = ethers.provider;
 
-const hre = require("hardhat");
-const timer = hre.timeAndMine;
-
+async function increaseTime(value) {
+    if (!ethers.BigNumber.isBigNumber(value)) {
+      value = ethers.BigNumber.from(value);
+    }
+    await provider.send('evm_increaseTime', [value.toNumber()]);
+    await provider.send('evm_mine');
+  }
 
 describe("ForkSwap Contract" , function () {
     let Fork;
@@ -28,7 +32,6 @@ describe("ForkSwap Contract" , function () {
     const address = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
     const erc20 = new ethers.Contract(address, abi, provider);
 
-    
 
     beforeEach(async function () {
         Fork = await ethers.getContractFactory("ForkSwap");
@@ -59,7 +62,11 @@ describe("ForkSwap Contract" , function () {
             let block = await provider.getBlock(block_number);
             let block_timestamp = block.timestamp;
             console.log("Block Timestamp:" + block_timestamp);
-            await timer.increaseTime("25 hours");
+            
+            // await provider.send('evm_increaseTime', [3600]);
+            // await provider.send('evm_mine');
+            increaseTime(3600);
+            block_timestamp = block.timestamp;
             console.log("Block Timestamp:" + block_timestamp);
         });
     });
