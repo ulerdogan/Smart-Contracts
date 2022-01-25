@@ -3,10 +3,12 @@ pragma solidity ^0.8.11;
 
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Marketplace721 is Ownable {
+contract Marketplace is Ownable, ERC721Holder, ERC1155Holder {
     using EnumerableSet for EnumerableSet.UintSet;
 
     struct Listing {
@@ -225,5 +227,13 @@ contract Marketplace721 is Ownable {
         delete (idToListing[_listingId]);
         listings.remove(_listingId);
         userListings[_listing.owner].remove(_listingId);
+    }
+
+    function showListing(uint256 _listingId) external view returns(Listing memory) {
+        return idToListing[_listingId];
+    }
+    
+    function showMyListing(uint256 _order) external view returns(Listing memory) {
+        return idToListing[userListings[msg.sender].at(_order)];
     }
 }
